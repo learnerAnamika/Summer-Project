@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <script>
+        function toggleForm() {
+            var form = document.getElementById("jobForm");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <button onclick="toggleForm()">Create New Job</button>
+
+    <!-- Job Posting Form -->
+    <div id="jobForm" style="display: none;">
+        <h2>Create New Job</h2>
+        <form action="save_job.php" method="POST">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" name="jobTitle" required><br>
+
+            <label for="jobDetails">Job Details:</label>
+            <textarea name="jobDetails" rows="4" required></textarea><br>
+
+            <label for="jobLocation">Job Location:</label>
+            <input type="text" name="jobLocation" required><br>
+
+            <label for="pay">Pay:</label>
+            <input type="text" name="pay" required><br>
+
+            <label for="jobType">Job Type:</label>
+            <input type="text" name="jobType" required><br>
+
+            <label for="qualification">Qualification:</label>
+            <input type="text" name="qualification" required><br>
+
+            <label for="jobBenefits">Job Benefits:</label>
+            <input type="text" name="jobBenefits" required><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Display Job Listings -->
+    <!-- <h2>Job Listings</h2>
+    <div id="jobListings">
+        <?php
+        // Establish a database connection
+        $db = new mysqli("localhost", "username", "password", "your_database");
+        if ($db->connect_error) {
+            die("Connection failed: " . $db->connect_error);
+        }
+    
+        // Fetch and display jobs from the database
+        $sql = "SELECT * FROM jobs";
+        $result = $db->query($sql);
+    
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='job-listing'>";
+                echo "<h3>{$row['jobTitle']}</h3>";
+                echo "<p><strong>Location:</strong> {$row['jobLocation']}</p>";
+                echo "<p><strong>Pay:</strong> {$row['pay']}</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No jobs available.</p>";
+        }
+    
+        // Close the database connection
+        $db->close();
+        ?>
+    </div> -->
+    
+</body>
+</html>

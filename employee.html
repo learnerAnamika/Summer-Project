@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include custom CSS -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Left Column Styles */
+        .left-column {
+            background-color: #343a40;
+            padding: 20px;
+            color: #ffffff;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .menu-list {
+            list-style-type: none;
+            padding: 15%;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            font-size: 18px;
+            margin-bottom: 10%;
+        }
+
+        /* Divider Line Styles */
+        .divider-line {
+            border-top: 1px solid #5a6269;
+            margin: 10px 0;
+        }
+
+        /* Logout Button Styles */
+        .logout-btn {
+            margin-top: 20px;
+            background-color: #dc3545;
+            color: #ffffff;
+            border: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Right Column Styles */
+        .right-column {
+            padding: 20px;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        /* Custom Styles for Menu Content */
+        .menu-content {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Employee Dashboard</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-3 left-column">
+                <div class="profile-name">
+                    <h2>Employee</h2>
+                </div>
+                <!-- Menu List -->
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class="nav-link active" href="javascript:void(0);" onclick="showDashboard()">Dashboard</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="showJobs()">Jobs</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="showResume()">Resume</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="showEmail()">Email</a>
+                    </li>
+                </ul>
+                <!-- Divider Line -->
+                <div class="divider-line"></div>
+                <!-- Logout Button -->
+                <a href="homepage.html" class="btn btn-danger logout-btn">Logout</a>
+            </div>
+
+            <!-- Right Column (Display Area) -->
+            <div class="col-md-9 right-column">
+                <!-- Content will be displayed here based on menu selection -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Functions to show menu content in the right column
+        function showDashboard() {
+             $(".right-column").html("<div class='menu-content'><h3>Dashboard</h3></div>");
+        }
+    
+        function showJobs() {
+             $(".right-column").html("<div class='menu-content'><h3>Jobs</h3></div>");
+        }
+
+        function showResume() {
+            $(".right-column").html("<div class='menu-content'><h3>Resume</h3></div>");
+        }
+
+        function showEmail() {
+            $(".right-column").html("<div class='menu-content'><h3>Email</h3></div>");
+        }
+
+        // Initial content to show
+        showDashboard();
+
+
+    </script>
+</body>
+</html>

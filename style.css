@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav {
+    margin-top: 10px;
+}
+
+.nav-link {
+    font-size: 18px;
+    margin-right: 20px;
+    color: #333;
+}
+
+.nav-link:hover {
+    color: #007BFF;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+/* section */
+.join-section {
+    background-color: #f5f5f5;
+    padding: 60px 0;
+}
+
+.join-heading {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.join-description {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* Buttons styling */
+.join-buttons .btn {
+    font-size: 20px;
+    padding: 12px 30px;
+    margin-right: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.join-buttons .btn:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Illustration image */
+.illustration img {
+    max-width: 100%;
+}
+
+
+/* category */
+.job-categories {
+    padding: 30px 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.category-item {
+    text-align: center;
+    padding: 10px; /* Add padding to the cards */
+    border: 1px solid #ccc; /* Add a border for separation */
+    border-radius: 10px; /* Add rounded corners */
+    height: 100%; /* Make all cards the same height */
+    background-color: #f8f9fa; /* Add a background color */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add transitions for translation and box-shadow */
+}
+
+.category-item img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px; /* Limit the image height */
+}
+
+.category-item h3 {
+    margin-top: 10px;
+    font-size: 1.2rem; /* Adjust the font size */
+}
+
+.category-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box shadow on hover */
+    transform: translateY(-5px); /* Translate the card slightly up on hover */
+    cursor: pointer;
+}
+
+
+
+
