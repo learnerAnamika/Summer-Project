@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        /* Form Styling */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #007bff;
+}
+
+button[type="submit"],
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover,
+button:hover {
+    background-color: #555;
+}
+
+/* Section Styling */
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Download Resume Button Styling */
+button.download {
+    background-color: #007bff;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button.download:hover {
+    background-color: #0056b3;
+}
+
+/* Additional Styles for Improved UI */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Resume Management</h1>
+    
+    <!-- Create New Resume Form -->
+    <button onclick="showCreateForm()">Create New Resume</button>
+    <div id="createForm" style="display: none;">
+        <h2>Create New Resume</h2>
+        <form action="save_resume.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
+
+            <label for="summary">Summary:</label><br>
+            <textarea name="summary" rows="4" required></textarea><br>
+
+            <label for="experience">Experience:</label><br>
+            <textarea name="experience" rows="4" required></textarea><br>
+
+            <button type="submit">Save Resume</button>
+        </form>
+    </div>
+
+    <!-- My Resume Section -->
+    <button onclick="showMyResume()">My Resume</button>
+    <div id="myResume" style="display: none;">
+    <h2>My Resume</h2>
+    <div id="resumeContent"></div> <!-- Content will be loaded here -->
+    </div>
+
+    <!-- Download Resume Button -->
+    <button onclick="downloadResume()">Download Resume</button>
+
+    <script>
+        function showCreateForm() {
+            document.getElementById("createForm").style.display = "block";
+            document.getElementById("myResume").style.display = "none";
+        }
+    
+        function showMyResume() {
+    document.getElementById("createForm").style.display = "none";
+    const myResumeDiv = document.getElementById("myResume");
+    myResumeDiv.style.display = "block";
+
+    // Fetch and display resume content
+    fetch("display_resume.php")
+        .then(response => response.text())
+        .then(htmlContent => {
+            const resumeContentDiv = document.getElementById("resumeContent");
+            resumeContentDiv.innerHTML = htmlContent;
+        })
+        .catch(error => {
+            console.error("Error fetching resume data:", error);
+        });
+}
+        function downloadResume() {
+            // Fetch the resume data from the server
+            fetch("download_resume.php")
+                .then(response => response.blob())
+                .then(blob => {
+                    // Create a temporary URL for the Blob
+                    const url = window.URL.createObjectURL(blob);
+    
+                    // Create a hidden anchor element and trigger the download
+                    const a = document.createElement("a");
+                    a.style.display = "none";
+                    a.href = url;
+                    a.download = "my_resume.txt";
+                    document.body.appendChild(a);
+                    a.click();
+    
+                    // Clean up
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error("Error fetching resume data:", error);
+                });
+        }
+    </script>
+    
+</body>
+</html>

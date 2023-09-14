@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Add custom CSS styles here */
+    </style>
+</head>
+<body>
+    <!-- Dashboard Content -->
+    <div class="container mt-5">
+        <h2>Welcome to Your Dashboard</h2>
+        
+        <!-- Statistics -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Statistics</h4>
+                <ul>
+                    <li>Total Jobs: 100</li>
+                    <li>Active Jobs: 75</li>
+                    <li>Applications Submitted: 25</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h4>Pie Chart</h4>
+                <canvas id="jobStatusChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <h4>Recent Activity</h4>
+        <ul>
+            <li>New job posting created.</li>
+            <li>Application submitted for Job X.</li>
+            <li>Updated your profile.</li>
+        </ul>
+        
+        <!-- Your Upcoming Tasks -->
+        <h4>Your Upcoming Tasks</h4>
+        <ul>
+            <li>Review applications for Job Y.</li>
+            <li>Schedule an interview for Job Z.</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript to create the pie chart -->
+    <script>
+        // Sample data for the pie chart
+        var ctx = document.getElementById('jobStatusChart').getContext('2d');
+        var jobStatusChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Active', 'Inactive'],
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: ['#007BFF', '#FFC107'],
+                }]
+            },
+        });
+    </script>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

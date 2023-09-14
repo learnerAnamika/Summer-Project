@@ -134,39 +134,46 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-        function loadContent(url) {
-    $.ajax({
-        url: url,
-        method: 'GET',
-        success: function (data) {
-            $(".right-column").html(data);
-        },
-        error: function (error) {
-            console.error("Error loading content:", error);
-        }
+    // Define your content loading functions
+
+    function loadContent(url) {
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function (data) {
+                $(".right-column").html(data);
+            },
+            error: function (error) {
+                console.error("Error loading content:", error);
+            }
+        });
+    }
+
+    function showDashboard() {
+        loadContent('dashboard.html');
+    }
+
+    function showJobListings() {
+        loadContent('joblistings.html');
+    }
+
+    function showEditJobListing() {
+        loadContent('editjoblist.html');
+    }
+
+    function showViewApplicants() {
+        loadContent('viewapplicants.html');
+    }
+
+    function showSendReceiveEmails() {
+        loadContent('emails.html');
+    }
+
+    // Call the showDashboard() function to display initial content
+    $(document).ready(function () {
+        showDashboard();
     });
-}
-
-function showDashboard() {
-    loadContent('dashboard.html');
-}
-
-function showJobListings() {
-    loadContent('joblistings.html');
-}
-
-function showEditJobListing() {
-    loadContent('editjoblisting.html');
-}
-
-function showViewApplicants() {
-    loadContent('viewapplicants.html');
-}
-
-function showSendReceiveEmails() {
-    loadContent('sendreceiveemails.html');
-}
-
 </script>
+
 </body>
 </html>

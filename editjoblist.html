@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+    /* CSS for the job list */
+.job-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Style for each job item */
+.job-item {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Style for the job title */
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Style for the job details */
+.job-details {
+    font-size: 14px;
+    margin-top: 5px;
+}
+</style>
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <div id="jobList">
+        <!-- Job listings will be added here using JavaScript -->
+    </div>
+
+    <script>
+        // JavaScript function to fetch and display job listings
+        // JavaScript function to fetch and display job listings
+// JavaScript function to fetch and display job listings as a list
+async function fetchAndDisplayJobs() {
+    try {
+        const response = await fetch('fetch_jobs.php');
+        const jobList = await response.json();
+
+        const jobListContainer = document.getElementById('jobList');
+
+        // Create an unordered list for job listings
+        const jobListElement = document.createElement('ul');
+        jobListElement.classList.add('job-list');
+
+        // Iterate through the job list and create list items
+        jobList.forEach(job => {
+            const jobItem = document.createElement('li');
+            jobItem.classList.add('job-item');
+
+            // Create elements for job title, job details, and other details
+            const jobTitle = document.createElement('div');
+            jobTitle.classList.add('job-title');
+            jobTitle.textContent = job.jobTitle;
+
+            const jobDetails = document.createElement('div');
+            jobDetails.classList.add('job-details');
+            jobDetails.textContent = job.jobDetails;
+
+            const jobLocation = document.createElement('div');
+            jobLocation.classList.add('job-details');
+            jobLocation.textContent = 'Location: ' + job.jobLocation;
+
+            const jobPay = document.createElement('div');
+            jobPay.classList.add('job-details');
+            jobPay.textContent = 'Pay: ' + job.pay;
+
+            const jobType = document.createElement('div');
+            jobType.classList.add('job-details');
+            jobType.textContent = 'Job Type: ' + job.jobType;
+
+            const jobQualification = document.createElement('div');
+            jobQualification.classList.add('job-details');
+            jobQualification.textContent = 'Qualification: ' + job.qualification;
+
+            const jobBenefits = document.createElement('div');
+            jobBenefits.classList.add('job-details');
+            jobBenefits.textContent = 'Benefits: ' + job.jobBenefits;
+
+            // Append all the elements to the job item
+            jobItem.appendChild(jobTitle);
+            jobItem.appendChild(jobDetails);
+            jobItem.appendChild(jobLocation);
+            jobItem.appendChild(jobPay);
+            jobItem.appendChild(jobType);
+            jobItem.appendChild(jobQualification);
+            jobItem.appendChild(jobBenefits);
+
+            // Add the job item to the job list
+            jobListElement.appendChild(jobItem);
+        });
+
+        // Add the job list to the container
+        jobListContainer.appendChild(jobListElement);
+    } catch (error) {
+        console.error('Error fetching job listings:', error);
+    }
+}
+
+// Call the function to fetch and display jobs when the page loads
+window.addEventListener('load', fetchAndDisplayJobs);
+
+
+    </script>
+</body>
+</html>

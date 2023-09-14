@@ -1,9 +1,9 @@
 <?php
 // Include your database connection code here
-$servername = "65.109.153.186";
-$username = "shrishak_nc";
-$password = "Aditya@123";
-$dbname = "shrishak_nc";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "job_list";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

@@ -4,19 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
-    <script>
-        function toggleForm() {
-            var form = document.getElementById("jobForm");
-            form.style.display = form.style.display === "none" ? "block" : "none";
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
         }
-    </script>
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #jobForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            margin: 0 auto;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+        }
+
+        #jobForm.hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Job Listings</h1>
-    <button onclick="toggleForm()">Create New Job</button>
+    <div class="button-container">
+        <button id="createJobButton" onclick="toggleForm()">Create New Job</button>
+    </div>
 
     <!-- Job Posting Form -->
-    <div id="jobForm" style="display: none;">
+    <div id="jobForm" class="hidden">
         <h2>Create New Job</h2>
         <form action="save_job.php" method="POST">
             <label for="jobTitle">Job Title:</label>
@@ -40,40 +111,29 @@
             <label for="jobBenefits">Job Benefits:</label>
             <input type="text" name="jobBenefits" required><br>
 
-            <input type="submit" value="Submit">
+            <div class="form-buttons">
+                <button type="button" id="cancelButton" onclick="cancelForm()">Cancel</button>
+                <input type="submit" value="Save">
+            </div>
         </form>
     </div>
 
-    <!-- Display Job Listings -->
-    <!-- <h2>Job Listings</h2>
-    <div id="jobListings">
-        <?php
-        // Establish a database connection
-        $db = new mysqli("localhost", "username", "password", "your_database");
-        if ($db->connect_error) {
-            die("Connection failed: " . $db->connect_error);
+    <script>
+        function toggleForm() {
+            var form = document.getElementById("jobForm");
+            var createButton = document.getElementById("createJobButton");
+
+            form.classList.toggle("hidden");
+            createButton.style.display = "none";
         }
-    
-        // Fetch and display jobs from the database
-        $sql = "SELECT * FROM jobs";
-        $result = $db->query($sql);
-    
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='job-listing'>";
-                echo "<h3>{$row['jobTitle']}</h3>";
-                echo "<p><strong>Location:</strong> {$row['jobLocation']}</p>";
-                echo "<p><strong>Pay:</strong> {$row['pay']}</p>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>No jobs available.</p>";
+
+        function cancelForm() {
+            var form = document.getElementById("jobForm");
+            var createButton = document.getElementById("createJobButton");
+
+            form.classList.add("hidden");
+            createButton.style.display = "inline-block";
         }
-    
-        // Close the database connection
-        $db->close();
-        ?>
-    </div> -->
-    
+    </script>
 </body>
 </html>
